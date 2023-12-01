@@ -1,0 +1,28 @@
+{
+  "name": "@nerdko/web-services-test-challenge",
+  "version": "1.0.0",
+  "description": "web services automation challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nerdko/web-services-test-challenge.git"
+  },
+  "keywords": [
+    "Nerdko",
+    "web-services",
+    "challegne.",
+    "cypress"
+  ],
+  "author": "Nyussim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Nerdko/web-services-test-challenge/issues"
+  },
+  "homepage": "https://github.com/Nerdko/web-services-test-challenge#readme",
+  "dependencies": {
+    "cypress": "^13.6.0"
+  }
+}
