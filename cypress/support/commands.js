@@ -1,25 +1,22 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add("petCrudeJson", (method, uri, pet, status) => {
+  cy.fixture("pet_crude.json").then((crude) => {
+    //Getting the json format from a fixture for ease of update and ease of reading the request
+    crude.id = 0;
+    crude.category.id = pet.category.id;
+    crude.category.name = pet.category.name;
+    crude.name = pet.name;
+    crude.tags[0].id = pet.tag.id;
+    crude.tags[0].name = pet.tag.name;
+    crude.status = status;
+
+    cy.request({
+      method: method,
+      url: uri,
+      headers: {
+        accept: "application/json",
+        "Content-type": "application/json",
+      },
+      body: crude,
+    });
+  });
+});
