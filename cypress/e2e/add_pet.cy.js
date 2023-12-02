@@ -9,6 +9,7 @@ describe("pet cycle", () => {
 
   beforeEach(() => {
     cy.petCrudeJson(method, addPetUri, dog, status).then((resp) => {
+      expect(resp.status).to.eq(200);
       petId = resp.body.id;
       response = resp;
     });
@@ -47,9 +48,9 @@ describe("pet cycle", () => {
       method: "PUT",
       url: addPetUri,
       body: crude,
-    }),
-      then((response) => {
-        expect(response.body.name).to.deep.eq(crude.name);
-      });
+    }).then((response) => {
+      expect(response.status).to.eq(200);
+      expect(response.body.name).to.deep.eq(crude.name);
+    });
   });
 });
